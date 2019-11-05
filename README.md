@@ -16,7 +16,6 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false|
 |name|string|null: false|
 |address|string|null: false|
 |password|string|null: false|
