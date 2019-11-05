@@ -16,22 +16,24 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_name|string|null: false|
+|name|string|null: false|
 |address|string|null: false|
 |password|string|null: false|
 
 ### Association
 - has_many :groups_users
-- has_many:group
-  has_many:tweet
+- has_many:groups,through: :groups_users
+  has_many:tweets
 
 
 ## tweetテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|message|text|null: false|
+|message|text||
 |image|string||
+|user_id|integer|null: false|
+|group_id|integer|null: false|
 
 ### Association
 - belongs_to :group
@@ -42,9 +44,9 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|group_name|string|null: false|
+|name|string|null: false|
 
 ### Association
-- has_many :user
-  has_many :tweet
+- has_many :users, through: :groups_users
+  has_many :tweets
 - has_many :groups_users
