@@ -16,14 +16,15 @@
 
 |Column|Type|Options|
 |------|----|-------|
+|user_id|integer|null: false|
 |name|string|null: false|
 |address|string|null: false|
 |password|string|null: false|
 
 ### Association
-- has_many :groups_users
-- has_many:groups,through: :groups_users
-  has_many:tweets
+ has_many :groups_users
+ has_many:groups,through: :groups_users
+ has_many:tweets
 
 
 ## tweetテーブル
