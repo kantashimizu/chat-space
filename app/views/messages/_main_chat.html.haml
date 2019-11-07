@@ -1,0 +1,27 @@
+.chat-main
+  .main-header
+    .main-header_left-box
+      .main-header_left-box_current-group
+        パソマソパソ
+      .main-header_left-box_menber-list
+        Member
+        .main-heder_left-box_menber-list_menber
+          kanta
+    .main-heder_edit-btn
+      = link_to '#', class: "edit" do
+        Edit
+  .messages
+    .message
+      .message_upper-info
+        kanta
+      .message_text
+        shimizu
+  .form
+    .new_message
+      .input-box
+        %label.input-box__image
+          %i.fa.fa-image
+            %input.file{type: "file"}
+        %input.input-box_text{placeholder:"type a message"}
+        %button.submit-btn
+          Send
