@@ -2,7 +2,7 @@
   .side-header
     .side-header_box
       .side-header_box_user-name
-        kanta
+        = current_user.name
       .side-header_box_menu
         .side-header_box_menu_new-group
           = link_to "#" do
@@ -13,6 +13,6 @@
   .groups
     .group
       .group_group-name
-        アソパソマソ
+        アソパソマソそ
       .group_latest-message
         まだメッセージがありません
