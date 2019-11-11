@@ -2,26 +2,23 @@
   .main-header
     .main-header_left-box
       .main-header_left-box_current-group
-        パソマソパソ
-      .main-header_left-box_menber-list
-        Member
-        .main-heder_left-box_menber-list_menber
-          kanta
+        = @group.name
+      - @group.users.each do |user|
+        .main-header_left-box_menber-list
+          Member:
+          .main-heder_left-box_menber-list_menber
+            = user.name
     .main-heder_edit-btn
-      = link_to '#', class: "edit" do
+      = link_to edit_group_path(@group.id) do
         Edit
   .messages
-    .message
-      .message_upper-info
-        kanta
-      .message_text
-        shimizu
+    = render @messages
+    
   .form
-    .new_message
-      .input-box
-        %label.input-box__image
-          %i.fa.fa-image
-            %input.file{type: "file"}
-        %input.input-box_text{placeholder:"type a message"}
-        %button.submit-btn
-          Send
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'

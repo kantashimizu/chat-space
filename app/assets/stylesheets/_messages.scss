@@ -56,6 +56,7 @@
           .group_group-name{
             font-size: 15px;
             margin-bottom: 5px;
+            color:#ffffff;
           }
           .group_latest-message{
             font-size: 11px;    
@@ -112,19 +113,29 @@
        padding: 46px 40px;
        background-color: #fafafa;
        overflow: auto;
-       .message{
-         padding-bottom: 40px;
+      .message_group{
+        height: 24px;
+        width: 307px;
+        display: flex;}
+        .message{
+          padding-bottom: 40px;
           .message_upper-info{
-           display: flex;
-           margin-bottom: 10px; 
-         }
+            display: flex;
+            margin-bottom: 10px; 
+        }
+          .message_upper-info_data{
+            color:#999999;
+            font-size: 12px;
+            margin-left: 10px;
+          } 
           .message_text{
-           color:#434a54;
-           font-size:14px;
-           margin-bottom: 10px;
-         }
-       }
-     }
+            color:#434a54;
+            font-size:14px;
+            margin-bottom: 10px;
+        }
+      }
+      
+      }
      .form{
        height:50px;
        padding: 20px 40px;
@@ -132,52 +143,39 @@
        
        .new_message{
          display: flex;
-         .input-box{
+         position: relative;
+         .form__message{
            height: 50px;
            display: flex;
            justify-content: space-between;
-           width: 100%;
+           width:  945px;
            position: relative;
+           margin-right: 25px;
            
            
-            .input-box_text{
-              margin-right: 25px;
+            .form__mask{
               width: 100%;
-              position: relative;
-              
             }
-            .input-box_image{
-              height: 30px;
-              width: 22.3px;
-              position: absolute;
-              right: 120px;
-              top:10px;
-              font-size:20.8px;
-              background-color:#ffffff;
-              color:black;
-              a:visited { color:black; text-decoration: none;}
-            }
+          }
             
-            .submit-btn{
-             background-color:#38aef0;
-             height: 50px;
-             width: 100px;
-             color:#ffffff;
-             font-size: 20px;
+       .form__submit{
+          background-color:#38aef0;
+          height: 50px;
+          width: 100px;
+          color:#ffffff;
+          font-size: 20px;
            }
+         }
         }
-       } 
-     }
-  }
-
-  .file {
+       }
+  .hidden {
     display: none;
   }
 
   .fa-image {
     position: absolute;
-    right: 130px;
-    bottom:15px;
-    font-size:20.8px;
-    z-index: 5
+    right: 140px;
+    bottom:12px;
+    font-size:30px;
+    z-index: 5;
   }
