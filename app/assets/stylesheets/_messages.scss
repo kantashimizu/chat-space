@@ -27,9 +27,6 @@
           width: 100%;
           position: relative;
           margin: 0 auto;
-          .side-header_box_user-name{
-            
-          }
           .side-header_box_menu{
               display: flex;
               position: relative;
@@ -76,20 +73,19 @@
        justify-content: space-between;
        border-bottom: solid 1px #eee;
        overflow: scroll;
+       position: relative;
         .main-header_left-box{
           margin-top: 35px;
-          .main-header_left-box_current-group{
-            display: flex;
-            font-size: 20px;
-            margin-bottom: 15px;
-          }
+          font-size: 20px;
           .main-header_left-box_menber-list{
             font-size: 12px;
             display: flex;
             color:#999999;
-            ;
+            position: absolute;
+            bottom: 10px;
+            }
+           }
           }
-        }
         
             
         .main-heder_edit-btn{
@@ -167,7 +163,7 @@
            }
          }
         }
-       }
+       
   .hidden {
     display: none;
   }

@@ -3,11 +3,11 @@
     .main-header_left-box
       .main-header_left-box_current-group
         = @group.name
-      - @group.users.each do |user|
         .main-header_left-box_menber-list
           Member:
-          .main-heder_left-box_menber-list_menber
-            = user.name
+          - @group.users.each do |user|
+            .main-heder_left-box_menber-list_menber
+              = user.name
     .main-heder_edit-btn
       = link_to edit_group_path(@group.id) do
         Edit

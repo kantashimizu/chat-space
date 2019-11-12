@@ -8,7 +8,7 @@
           = link_to new_group_path do
             %i.fa.fa-edit
         .side-header_box_menu_edit-user
-          = link_to "#" do
+          = link_to edit_user_path(current_user) do
             %i.fa.fa-cog
   .groups
     - current_user.groups.each do |group|
