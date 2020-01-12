@@ -156,7 +156,7 @@ return false;
 
 ### インクリメンタルサーチ機能
 ![c8ae20cedd355c3d32d7c2ddb02ec76e](https://user-images.githubusercontent.com/57340298/72162756-e1714880-3405-11ea-98d4-31b8ef8d37f9.gif)<br>
-上記の様に検索結果を非同期で表示出来る様になっております<br>
+:star:上記の様に検索結果を非同期で表示出来る様になっております<br>
 ⑴ルーティングなどAPI側の準備をする
 ```
 def index
@@ -326,7 +326,7 @@ $(document).on("click", ".chat-group-user__btn--remove", function() {
 
 ### 自動更新機能
 ![75605dcb2a3056730005f12b929988db](https://user-images.githubusercontent.com/57340298/72163060-707e6080-3406-11ea-809d-ac2c33ee4997.gif)<br>
-上記の様に時間の経過とともに自動でリロードされます。<br>
+:star:上記の様に時間の経過とともに自動でリロードされます。<br>
 ⑴表示されているメッセージのHTMLにid情報を追加
 ```
 //メッセージ全体にidを付与。   ※#{message.id}はjbuilderファイルで定義している
