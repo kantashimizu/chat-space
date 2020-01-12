@@ -145,7 +145,7 @@ function buildHTML(message){
 //$('.new_message').on('submit', function(e){　の処理の最後に
 return false;
 //と記述
-```<br>
+```
 ⑽ 非同期に失敗した場合の処理も準備する<br>
 ```
 //doneの処理の後に記述(失敗した時という意味)
