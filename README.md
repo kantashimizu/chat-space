@@ -326,6 +326,102 @@ $(document).on("click", ".chat-group-user__btn--remove", function() {
 
 ### 自動更新機能
 ![75605dcb2a3056730005f12b929988db](https://user-images.githubusercontent.com/57340298/72163060-707e6080-3406-11ea-809d-ac2c33ee4997.gif)<br>
+上記の様に時間の経過とともに自動でリロードされます。<br>
+⑴表示されているメッセージのHTMLにid情報を追加
+```
+//メッセージ全体にidを付与。   ※#{message.id}はjbuilderファイルで定義している
+.message{"data-message-id": "#{message.id}"}
+```
+⑵メッセージを更新するためのアクションを実装
+```
+class Api::MessagesController < ApplicationController
+
+  def index
+
+#今いるグループの情報をparamsによって取得し変数@groupに代入
+    @group = Group.find(params[:group_id]) 
+
+#グループ内のメッセージでlast_idよりも大きいidのメッセージがないかを探してきてそれらを@messageに代入
+    @messages = @group.messages.includes(:user).where('id > ?', params[:last_id])
+  end
+end
+```
+⑶追加したアクションを動かすためのルーティングを実装
+```
+Rails.application.routes.draw do
+  devise_for :users
+  root 'groups#index'
+  resources :users, only: [:index, :edit, :update]
+  resources :groups, only: [:new, :create, :edit, :update] do
+    resources :messages, only: [:index, :create]
+#ここからが追加
+    namespace :api do
+      resources :messages, only: :index, defaults: { format: 'json' }
+    end
+  end
+end
+```
+⑷追加したアクションをリクエストするよう実装
+```
+let reloadMessages = function () {
+
+//ブラウザに表示されている最後のメッセージからidを取得して、変数に代入
+      let last_message_id = $('.message:last').data("message-id");
+
+//ajaxの処理   
+      $.ajax({
+
+//今回はapiのmessagesコントローラーに飛ばす
+        url: "api/messages",
+//HTTP＿メソッド
+        type: 'get',
+//データはjson型で
+        dataType: 'json',
+
+//キーを自分で決め（今回はｌａｓｔ_id)そこに先ほど定義したlast_message_idを代入。これはコントローラーのparamsで取得される。
+        data: {last_id: last_message_id} 
+      })
+
+//doneの処理（仮)
+    .done(function(messages) {
+    console.log('success');
+  })
+
+//failの処理（仮)
+    .fail(function() {
+      console.log('error');
+  });
+```
+⑸取得した最新のメッセージをブラウザのメッセージ一覧に追加
+```
+.done(function (messages) { 
+
+//追加するhtmlの入れ物をつくる
+      let insertHTML = '';
+
+//取得したメッセージたちをEach文で分解
+      messages.forEach(function (message) {
+
+//htmlを作り出して、それを変数に代入(作り出す処理は非同期の時に作った)
+        insertHTML = buildHTML(message); 
+
+//変数に代入されたhtmlをmessagesクラスにぶち込む
+        $('.messages').append(insertHTML);
+      })
+    })
+```
+⑹数秒ごとにリクエストするよう実装
+```
+setInterval(reloadMessages, 5000);
+```
+⑺メッセージ分だけスクロールするよう実装
+```
+$('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+```
+⑻メッセージ一覧のページでのみJSが動くよう実装
+```
+if (window.location.href.match(/\/groups\/\d+\/messages/)){
+```
 
 
 
