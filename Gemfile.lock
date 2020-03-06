@@ -88,7 +88,7 @@ GEM
     erb2haml (0.1.5)
       html2haml
     erubis (2.7.0)
-    excon (0.68.0)
+    excon (0.71.0)
     execjs (2.7.0)
     ffi (1.11.1)
     fog-aws (3.5.2)
